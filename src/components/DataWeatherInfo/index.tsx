@@ -50,6 +50,7 @@ export const DataWeatherInfo = () => {
         fontSize={"30px"}
         fontWeight={"bold"}
       >
+        Ciudad:
         {dataWeather.name}
       </Text>
 
