@@ -12,6 +12,7 @@ import global_es from "../src/translations/es/global.json";
 
 import App from "./App";
 import "./styles/style.css";
+import { ToastContainer } from "react-toastify";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <ChakraProvider>
       <QueryClientProvider client={queryClient}>
         <App />
+        <ToastContainer />
       </QueryClientProvider>
     </ChakraProvider>
   </I18nextProvider>

@@ -8,8 +8,13 @@ import useInputStore from "./store/weatherlyStore";
 import { DataWeatherInfo } from "./components/DataWeatherInfo";
 import { TransButton } from "./components/TransButton";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { useTranslation } from "react-i18next";
+
 // ES6 Modules or TypeScript
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
 function App({}) {
   // Initialize inputValue from localStorage or an empty string
@@ -27,6 +32,7 @@ function App({}) {
   const { setDataWeather } = useInputStore();
 
   const [pageLoaded, setPageLoaded] = useState(true);
+  const [t] = useTranslation("global");
 
   useEffect(() => {
     // This effect will run only once when the component is mounted
@@ -47,24 +53,43 @@ function App({}) {
 
   useEffect(() => {
     if (isError) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Something went wrong!",
-        footer: "Please Enter A valid city name",
-      });
+      messageError();
+      // Swal.fire({
+      //   icon: "error",
+      //   title: "Oops...",
+      //   text: "Something went wrong!",
+      //   footer: "Please Enter A valid city name",
+      // });
     }
     if (data && isSuccess) {
       setDataWeather(data);
     }
   }, [data, isSuccess, setDataWeather, isError]);
 
+  const messageError = () => {
+    toast.error(t("ErrorMessage"), {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
   return (
     <Box
       display={"flex"}
       flexDirection={"column"}
       alignItems={"center"}
-      bg={"blue.800"}
+      bgImage={
+        "https://images.pexels.com/photos/1605148/pexels-photo-1605148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      }
+      backgroundRepeat={"no-repeat"}
+      backgroundSize={"cover"}
+      // bg={"blue.800"}
       w={"100%"}
       h={"100vh"}
       gap={"20px"}
@@ -79,7 +104,7 @@ function App({}) {
         gap={"10px"}
         p={"1rem"}
         w={["100%", "70%"]}
-        h={["86%", "75%", "65%"]}
+        h={["80%", "70%", "75%", "65%"]}
       >
         {/* Weather */}
         <Box

@@ -23,7 +23,7 @@ export const TransButton = () => {
   }, []);
 
   return (
-    <Box mt={"5px"} display={"flex"} gap={"5px"} ml={["60%", "80%"]}>
+    <Box mt={"5px"} display={"flex"} gap={"5px"} ml={["60%", "-80%"]}>
       <Button
         _hover={{ transform: "translateY(-5px)", background: "transparent" }}
         bg={"transparent"}

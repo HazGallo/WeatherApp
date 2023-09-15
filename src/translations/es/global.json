@@ -16,5 +16,7 @@
   "Temp": {
     "tempMax": "Temperatura Maxima",
     "tempMin": "Temperatura Minima"
-  }
+  },
+
+  "ErrorMessage": "Ciudad No Encontrada"
 }

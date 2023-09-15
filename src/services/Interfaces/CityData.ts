@@ -12,11 +12,25 @@ export interface PropsDataWeather {
   id: number;
   name: string;
   cod: number;
+  list: List;
 }
 
 export interface Coord {
   lon: number;
   lat: number;
+}
+
+export interface List {
+  dt: number;
+  main: Main;
+  weather: Weather[];
+  clouds: Clouds;
+  wind: Wind;
+  visibility: number;
+  pop: number;
+  rain?: Rain;
+  sys: Sys;
+  dt_txt: Date;
 }
 
 export interface Weather {
@@ -33,6 +47,10 @@ export interface Main {
   temp_max: number;
   pressure: number;
   humidity: number;
+}
+
+export interface Rain {
+  "3h": number;
 }
 
 export interface Wind {
