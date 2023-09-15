@@ -136,7 +136,7 @@ function App() {
                 justifyContent={"center"}
                 alignItems={"center"}
                 mt={["50%", "10%"]}
-                ml={["45%", "45%"]}
+                ml={["43%", "45%"]}
                 className="spinner"
               ></Box>
             ) : (
