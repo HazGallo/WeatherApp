@@ -13,10 +13,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { useTranslation } from "react-i18next";
 
+import "./styles/Spinner.css"; // Importa los estilos CSS
 // ES6 Modules or TypeScript
 // import Swal from "sweetalert2";
 
-function App({}) {
+function App() {
   // Initialize inputValue from localStorage or an empty string
   const [inputValue, setInputValue] = useState(
     localStorage.getItem("inputValue") || ""
@@ -28,7 +29,7 @@ function App({}) {
   };
 
   // The rest of your component code remains the same
-  const { isError, data, mutate, isSuccess } = useWeather();
+  const { isError, data, mutate, isSuccess, isLoading } = useWeather();
   const { setDataWeather } = useInputStore();
 
   const [pageLoaded, setPageLoaded] = useState(true);
@@ -127,8 +128,20 @@ function App({}) {
               handleChange={handleInputChange}
             />
           </Box>
-          <Box color={"black"}>
-            <DataWeatherInfo />
+          <Box overflow={"hidden"} color={"black"}>
+            {isLoading ? (
+              <Box
+                overflow={"hidden"}
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
+                mt={["50%", "10%"]}
+                ml={["45%", "45%"]}
+                className="spinner"
+              ></Box>
+            ) : (
+              <DataWeatherInfo />
+            )}
           </Box>
         </Box>
       </Box>

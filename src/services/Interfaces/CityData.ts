@@ -12,7 +12,7 @@ export interface PropsDataWeather {
   id: number;
   name: string;
   cod: number;
-  list: List;
+  list: List[];
 }
 
 export interface Coord {
