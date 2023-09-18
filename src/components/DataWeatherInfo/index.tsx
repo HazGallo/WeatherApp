@@ -6,8 +6,12 @@ import IconMaxTemp from "../../assets/icons/icoMaxTemp.svg";
 import IconMinTemp from "../../assets/icons/icoMinTemp.svg";
 import { useTranslation } from "react-i18next";
 
+// import forecastStore from "../../store/forecastStore";
+
 export const DataWeatherInfo = () => {
   const { dataWeather } = weatherlyStore();
+
+  // const { dataForecast } = forecastStore();
 
   const timestamp = dataWeather.dt;
   const date = new Date(timestamp * 1000);
@@ -16,6 +20,7 @@ export const DataWeatherInfo = () => {
 
   console.log(dataWeather);
   console.log(dataWeather.weather);
+
   const iconCode = dataWeather?.weather[0]?.icon;
   const iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
 
@@ -140,13 +145,15 @@ export const DataWeatherInfo = () => {
                   textAlign={["center", "initial"]}
                 >
                   <Image w={["15%", "8%"]} src={IconMinTemp} />
-                  {t("Temp.tempMin")}: <br /> {dataWeather.main.temp_max}°C
+                  {t("Temp.tempMin")}: <br /> {dataWeather.main.temp_min}°C
                 </ListItem>
               </Box>
             ))}
           </UnorderedList>
         </Box>
       </Box>
+
+      {/*  */}
     </Box>
   );
 };

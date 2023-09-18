@@ -128,10 +128,9 @@ function App() {
               handleChange={handleInputChange}
             />
           </Box>
-          <Box overflow={"hidden"} color={"black"}>
+          <Box color={"black"}>
             {isLoading ? (
               <Box
-                overflow={"hidden"}
                 display={"flex"}
                 justifyContent={"center"}
                 alignItems={"center"}
