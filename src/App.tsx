@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
+import { Box, CircularProgress } from "@chakra-ui/react";
 // import { Card } from './components/Card';
 // import { Button } from './components/button';
 import SearchInput from "./components/SearchInput";

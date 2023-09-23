@@ -1,12 +1,4 @@
-import {
-  Box,
-  Image,
-  ListItem,
-  Text,
-  UnorderedList,
-  CircularProgress,
-  CircularProgressLabel,
-} from "@chakra-ui/react";
+import { Box, Image, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 import weatherlyStore from "../../store/weatherlyStore";
 
 import IconMaxTemp from "../../assets/icons/icoMaxTemp.svg";
