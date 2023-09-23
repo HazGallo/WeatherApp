@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 // import { Card } from './components/Card';
 // import { Button } from './components/button';
 import SearchInput from "./components/SearchInput";
@@ -55,12 +55,12 @@ function App() {
   useEffect(() => {
     if (isError) {
       messageError();
-      // Swal.fire({
-      //   icon: "error",
-      //   title: "Oops...",
-      //   text: "Something went wrong!",
-      //   footer: "Please Enter A valid city name",
-      // });
+      //   // Swal.fire({
+      //   //   icon: "error",
+      //   //   title: "Oops...",
+      //   //   text: "Something went wrong!",
+      //   //   footer: "Please Enter A valid city name",
+      //   // });
     }
     if (data && isSuccess) {
       setDataWeather(data);
@@ -104,19 +104,11 @@ function App() {
         justifyContent={"center"}
         gap={"10px"}
         p={"1rem"}
-        w={["100%", "70%"]}
+        w={["80%", "70%"]}
         h={["80%", "70%", "75%", "65%"]}
       >
         {/* Weather */}
-        <Box
-          bg={"white"}
-          borderRadius={"md"}
-          p={"1rem"}
-          w={"90%"}
-          h={"100%"}
-          color={"bgShadow"}
-          boxShadow={"0px 3px 6px"}
-        >
+        <Box bg={"white"} borderRadius={"md"} p={"1rem"} w={"90%"} h={"100%"}>
           <Box
             mb={["5px", "10px"]}
             justifyContent={"center"}
@@ -130,14 +122,15 @@ function App() {
           </Box>
           <Box color={"black"}>
             {isLoading ? (
-              <Box
-                display={"flex"}
-                justifyContent={"center"}
+              <CircularProgress
                 alignItems={"center"}
-                mt={["50%", "10%"]}
-                ml={["43%", "45%"]}
-                className="spinner"
-              ></Box>
+                mt={["100%", "10%"]}
+                ml={["40%", "45%"]}
+                isIndeterminate
+                color="pink.500"
+              />
+            ) : isError ? (
+              t("ErrorMessage")
             ) : (
               <DataWeatherInfo />
             )}

@@ -59,7 +59,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       <Box
         p={["1rem", "0rem"]}
         mt={"5px"}
-        display={"flex"}
+        display={["none", "flex"]}
         justifyContent={"center"}
         gap={"10px"}
       >

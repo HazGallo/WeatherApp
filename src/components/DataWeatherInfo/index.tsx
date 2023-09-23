@@ -1,4 +1,12 @@
-import { Box, Image, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import {
+  Box,
+  Image,
+  ListItem,
+  Text,
+  UnorderedList,
+  CircularProgress,
+  CircularProgressLabel,
+} from "@chakra-ui/react";
 import weatherlyStore from "../../store/weatherlyStore";
 
 import IconMaxTemp from "../../assets/icons/icoMaxTemp.svg";
@@ -8,8 +16,11 @@ import { useTranslation } from "react-i18next";
 
 // import forecastStore from "../../store/forecastStore";
 
+// import forecastStore from "../../store/forecastStore";
+
 export const DataWeatherInfo = () => {
   const { dataWeather } = weatherlyStore();
+  // const { dataForecast } = forecastStore();
 
   // const { dataForecast } = forecastStore();
 
@@ -89,6 +100,7 @@ export const DataWeatherInfo = () => {
                   alignItems={"center"}
                   w={"50%"}
                   fontWeight={"bold"}
+                  textAlign={["center", "initial"]}
                 >
                   {cloudDescriptions[element.description] !== undefined // Comprobamos si existe una traducción
                     ? t(cloudDescriptions[element.description]) // Si existe, traducimos
@@ -102,7 +114,7 @@ export const DataWeatherInfo = () => {
                   fontWeight={"bold"}
                 >
                   {dataWeather.main.temp}°C
-                  <Image src={iconUrl} />
+                  <Image display={"flex"} src={iconUrl} />
                 </ListItem>
               </Box>
             ))}
@@ -147,6 +159,15 @@ export const DataWeatherInfo = () => {
                   <Image w={["15%", "8%"]} src={IconMinTemp} />
                   {t("Temp.tempMin")}: <br /> {dataWeather.main.temp_min}°C
                 </ListItem>
+
+                <ListItem
+                  display={"flex"}
+                  alignItems={"center"}
+                  gap={"5px"}
+                  fontSize={["sm", "md"]}
+                  fontWeight={"bold"}
+                  textAlign={["center", "initial"]}
+                ></ListItem>
               </Box>
             ))}
           </UnorderedList>
