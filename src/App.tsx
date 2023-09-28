@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, CircularProgress } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 // import { Card } from './components/Card';
 // import { Button } from './components/button';
 import SearchInput from "./components/SearchInput";
@@ -8,10 +8,14 @@ import useInputStore from "./store/weatherlyStore";
 import { DataWeatherInfo } from "./components/DataWeatherInfo";
 import { TransButton } from "./components/TransButton";
 
+import { Pulsar } from "@uiball/loaders"; //Spinners, page name is : uiball.com
+
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useTranslation } from "react-i18next";
+
+// import { Transition } from "react-transition-group";
 
 import "./styles/Spinner.css"; // Importa los estilos CSS
 // ES6 Modules or TypeScript
@@ -35,11 +39,15 @@ function App() {
   const [pageLoaded, setPageLoaded] = useState(true);
   const [t] = useTranslation("global");
 
+  // const [inProp, setInProp] = useState(false);
+  // const nodeRef = React.useRef(null);
+
   useEffect(() => {
     // This effect will run only once when the component is mounted
     setPageLoaded(false);
   }, []);
 
+  console.log(Error);
   // Use localStorage to save and load inputValue
   useEffect(() => {
     localStorage.setItem("inputValue", inputValue);
@@ -82,15 +90,10 @@ function App() {
 
   return (
     <Box
+      className="background"
       display={"flex"}
       flexDirection={"column"}
       alignItems={"center"}
-      bgImage={
-        "https://images.pexels.com/photos/1605148/pexels-photo-1605148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-      }
-      backgroundRepeat={"no-repeat"}
-      backgroundSize={"cover"}
-      // bg={"blue.800"}
       w={"100%"}
       h={"100vh"}
       gap={"20px"}
@@ -99,16 +102,20 @@ function App() {
 
       {/* Weather Api */}
       <Box
-        display={"flex"}
-        alignItems={"center"}
-        justifyContent={"center"}
-        gap={"10px"}
+        bg={"white"}
+        borderRadius={"md"}
         p={"1rem"}
-        w={["80%", "70%"]}
-        h={["80%", "70%", "75%", "65%"]}
+        // w={"90%"}
+        // h={"80%"}
+        // display={"flex"}
+        // alignItems={"center"}
+        // justifyContent={"center"}
+
+        w={["80%", "50%", "50%", "50%"]}
+        h={["65%", "70%", "75%", "65%"]}
       >
         {/* Weather */}
-        <Box bg={"white"} borderRadius={"md"} p={"1rem"} w={"90%"} h={"100%"}>
+        <Box>
           <Box
             mb={["5px", "10px"]}
             justifyContent={"center"}
@@ -122,17 +129,43 @@ function App() {
           </Box>
           <Box color={"black"}>
             {isLoading ? (
-              <CircularProgress
+              <Box
+                display={"flex"}
+                h={"200px"}
+                w={"100%"}
+                mt={["40%", "0%"]}
                 alignItems={"center"}
-                mt={["100%", "10%"]}
-                ml={["40%", "45%"]}
-                isIndeterminate
-                color="pink.500"
-              />
+                justifyContent={"center"}
+              >
+                <Pulsar size={80} speed={1.75} color="black" />
+              </Box>
             ) : isError ? (
-              t("ErrorMessage")
+              <Box
+                w={"100%"}
+                h={"200px"}
+                mt={["40%", "0%"]}
+                display={"flex"}
+                flexDirection={"column"}
+                justifyContent={"center"}
+                alignItems={"center"}
+                color={"red"}
+                fontSize={"lg"}
+                gap={"20px"}
+              >
+                <Image
+                  w={["20%", "10%"]}
+                  src={`https://www.pngarts.com/files/3/Letter-X-PNG-Free-Download.png`}
+                />
+                {t("ErrorMessage")}
+              </Box>
             ) : (
-              <DataWeatherInfo />
+              <Box
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
+              >
+                <DataWeatherInfo />
+              </Box>
             )}
           </Box>
         </Box>

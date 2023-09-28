@@ -50,7 +50,13 @@ export const DataWeatherInfo = () => {
   };
 
   return (
-    <Box display={"block"} justifyContent={"center"} alignItems={"center"}>
+    <Box
+      w={"100%"}
+      // display={"flex"}
+      // flexDirection={"column"}
+      // justifyContent={"center"}
+      // alignItems={"center"}
+    >
       <Text
         display={"flex"}
         justifyContent={"center"}
@@ -88,8 +94,8 @@ export const DataWeatherInfo = () => {
                 </ListItem>
 
                 <ListItem
-                  display={"flex"}
-                  alignItems={"center"}
+                  // display={"flex"}
+                  // alignItems={"center"}
                   w={"50%"}
                   fontWeight={"bold"}
                   textAlign={["center", "initial"]}
@@ -130,7 +136,7 @@ export const DataWeatherInfo = () => {
               >
                 <ListItem
                   display={"flex"}
-                  alignItems={"center"}
+                  // alignItems={"center"}
                   gap={"5px"}
                   fontSize={["sm", "md"]}
                   fontWeight={"bold"}

@@ -3,6 +3,9 @@ import { Box, Input, Button } from "@chakra-ui/react";
 
 import { useTranslation } from "react-i18next";
 
+import { IconButton } from "@chakra-ui/react";
+import { SearchIcon } from "@chakra-ui/icons";
+
 interface SearchInputProps {
   inputValue: string;
   handleChange: (value: string) => void;
@@ -24,6 +27,10 @@ const SearchInput: React.FC<SearchInputProps> = ({
     }
   };
 
+  const handleButtonClick = () => {
+    setLocalValue(localValue);
+    handleChange(localValue);
+  };
   const handleButtonClickSingapur = () => {
     setLocalValue("Singapore");
     handleChange("Singapore"); // Cuando se hace clic en el botón "Singapur"
@@ -43,7 +50,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
 
   return (
     <Box w={["100%", "60%"]}>
-      <Box>
+      <Box display={"flex"} gap={"5px"} mb={"10px"}>
         <Input
           focusBorderColor={"green"}
           bg={"gray.900"}
@@ -54,6 +61,15 @@ const SearchInput: React.FC<SearchInputProps> = ({
           value={localValue}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
+        />
+        <IconButton
+          bg={"black"}
+          color={"white"}
+          aria-label="Search database"
+          value={localValue}
+          onClick={handleButtonClick}
+          _hover={{ bg: "black" }}
+          icon={<SearchIcon />}
         />
       </Box>
       <Box
